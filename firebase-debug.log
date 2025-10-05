@@ -1,0 +1,124 @@
+[debug] [2025-10-05T19:39:57.251Z] ----------------------------------------------------------------------
+[debug] [2025-10-05T19:39:57.254Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Shani\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2025-10-05T19:39:57.254Z] CLI Version:   14.18.0
+[debug] [2025-10-05T19:39:57.254Z] Platform:      win32
+[debug] [2025-10-05T19:39:57.255Z] Node Version:  v22.20.0
+[debug] [2025-10-05T19:39:57.255Z] Time:          Mon Oct 06 2025 00:39:57 GMT+0500 (Pakistan Standard Time)
+[debug] [2025-10-05T19:39:57.255Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-10-05T19:39:57.261Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-10-05T19:39:57.261Z] > authorizing via signed-in user (xeeshan303.3.2@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\Shani\Documents\GitHub\ZxSchool Landing Page
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[info] i  If you want to create a project in a Google Cloud organization or folder, please use "firebase projects:create" instead, and return to this command when you've created the project. 
+[debug] [2025-10-05T19:40:24.090Z] Checked if tokens are valid: true, expires at: 1759696784148
+[debug] [2025-10-05T19:40:24.091Z] Checked if tokens are valid: true, expires at: 1759696784148
+[debug] [2025-10-05T19:40:24.093Z] >>> [apiv2][query] POST https://firebase.googleapis.com/v1/projects:checkProjectId [none]
+[debug] [2025-10-05T19:40:24.093Z] >>> [apiv2][body] POST https://firebase.googleapis.com/v1/projects:checkProjectId {"proposedId":"zxschool"}
+[debug] [2025-10-05T19:40:24.691Z] <<< [apiv2][status] POST https://firebase.googleapis.com/v1/projects:checkProjectId 200
+[debug] [2025-10-05T19:40:24.692Z] <<< [apiv2][body] POST https://firebase.googleapis.com/v1/projects:checkProjectId {"projectIdStatus":"PROJECT_ID_AVAILABLE","suggestedProjectId":"zxschool"}
+[debug] [2025-10-05T19:40:33.922Z] Checked if tokens are valid: true, expires at: 1759696784148
+[debug] [2025-10-05T19:40:33.923Z] Checked if tokens are valid: true, expires at: 1759696784148
+[debug] [2025-10-05T19:40:33.923Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects [none]
+[debug] [2025-10-05T19:40:33.923Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"projectId":"zxschool","name":"zxschool"}
+[debug] [2025-10-05T19:40:35.605Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects 200
+[debug] [2025-10-05T19:40:35.605Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"name":"operations/create_project.global.4694244793792696197"}
+[debug] [2025-10-05T19:40:35.607Z] Checked if tokens are valid: true, expires at: 1759696784148
+[debug] [2025-10-05T19:40:35.607Z] Checked if tokens are valid: true, expires at: 1759696784148
+[debug] [2025-10-05T19:40:35.607Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/operations/create_project.global.4694244793792696197 [none]
+[debug] [2025-10-05T19:40:36.833Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/operations/create_project.global.4694244793792696197 200
+[debug] [2025-10-05T19:40:36.833Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/operations/create_project.global.4694244793792696197 {"name":"operations/create_project.global.4694244793792696197","metadata":{"@type":"type.googleapis.com/google.cloudresourcemanager.v1.ProjectCreationStatus","gettable":true,"ready":true},"done":true,"response":{"@type":"type.googleapis.com/google.cloudresourcemanager.v1.Project","projectNumber":"1088448379741","projectId":"zxschool","lifecycleState":"ACTIVE","name":"zxschool","createTime":"2025-10-05T19:40:36.039978Z"}}
+[debug] [2025-10-05T19:40:36.835Z] Checked if tokens are valid: true, expires at: 1759696784148
+[debug] [2025-10-05T19:40:36.835Z] Checked if tokens are valid: true, expires at: 1759696784148
+[debug] [2025-10-05T19:40:36.836Z] >>> [apiv2][query] POST https://firebase.googleapis.com/v1beta1/projects/zxschool:addFirebase [none]
+[debug] [2025-10-05T19:40:40.733Z] <<< [apiv2][status] POST https://firebase.googleapis.com/v1beta1/projects/zxschool:addFirebase 200
+[debug] [2025-10-05T19:40:40.733Z] <<< [apiv2][body] POST https://firebase.googleapis.com/v1beta1/projects/zxschool:addFirebase {"name":"operations/workflows/NGY5MzZlYjktODdmNi00MWQ2LWEzMTEtNzU5MWYzZGMxZGFk"}
+[debug] [2025-10-05T19:40:40.733Z] Checked if tokens are valid: true, expires at: 1759696784148
+[debug] [2025-10-05T19:40:40.733Z] Checked if tokens are valid: true, expires at: 1759696784148
+[debug] [2025-10-05T19:40:40.733Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/operations/workflows/NGY5MzZlYjktODdmNi00MWQ2LWEzMTEtNzU5MWYzZGMxZGFk [none]
+[debug] [2025-10-05T19:40:45.560Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/operations/workflows/NGY5MzZlYjktODdmNi00MWQ2LWEzMTEtNzU5MWYzZGMxZGFk 200
+[debug] [2025-10-05T19:40:45.560Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/operations/workflows/NGY5MzZlYjktODdmNi00MWQ2LWEzMTEtNzU5MWYzZGMxZGFk {"name":"operations/workflows/NGY5MzZlYjktODdmNi00MWQ2LWEzMTEtNzU5MWYzZGMxZGFk"}
+[debug] [2025-10-05T19:40:46.072Z] [Add Firebase Poller] Retrying task index 0
+[debug] [2025-10-05T19:40:46.072Z] Checked if tokens are valid: true, expires at: 1759696784148
+[debug] [2025-10-05T19:40:46.072Z] Checked if tokens are valid: true, expires at: 1759696784148
+[debug] [2025-10-05T19:40:46.073Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/operations/workflows/NGY5MzZlYjktODdmNi00MWQ2LWEzMTEtNzU5MWYzZGMxZGFk [none]
+[debug] [2025-10-05T19:40:46.866Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/operations/workflows/NGY5MzZlYjktODdmNi00MWQ2LWEzMTEtNzU5MWYzZGMxZGFk 200
+[debug] [2025-10-05T19:40:46.867Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/operations/workflows/NGY5MzZlYjktODdmNi00MWQ2LWEzMTEtNzU5MWYzZGMxZGFk {"name":"operations/workflows/NGY5MzZlYjktODdmNi00MWQ2LWEzMTEtNzU5MWYzZGMxZGFk"}
+[debug] [2025-10-05T19:40:47.869Z] [Add Firebase Poller] Retrying task index 0
+[debug] [2025-10-05T19:40:47.870Z] Checked if tokens are valid: true, expires at: 1759696784148
+[debug] [2025-10-05T19:40:47.870Z] Checked if tokens are valid: true, expires at: 1759696784148
+[debug] [2025-10-05T19:40:47.870Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/operations/workflows/NGY5MzZlYjktODdmNi00MWQ2LWEzMTEtNzU5MWYzZGMxZGFk [none]
+[debug] [2025-10-05T19:40:48.435Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/operations/workflows/NGY5MzZlYjktODdmNi00MWQ2LWEzMTEtNzU5MWYzZGMxZGFk 200
+[debug] [2025-10-05T19:40:48.435Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/operations/workflows/NGY5MzZlYjktODdmNi00MWQ2LWEzMTEtNzU5MWYzZGMxZGFk {"name":"operations/workflows/NGY5MzZlYjktODdmNi00MWQ2LWEzMTEtNzU5MWYzZGMxZGFk"}
+[debug] [2025-10-05T19:40:50.445Z] [Add Firebase Poller] Retrying task index 0
+[debug] [2025-10-05T19:40:50.446Z] Checked if tokens are valid: true, expires at: 1759696784148
+[debug] [2025-10-05T19:40:50.446Z] Checked if tokens are valid: true, expires at: 1759696784148
+[debug] [2025-10-05T19:40:50.446Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/operations/workflows/NGY5MzZlYjktODdmNi00MWQ2LWEzMTEtNzU5MWYzZGMxZGFk [none]
+[debug] [2025-10-05T19:40:51.206Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/operations/workflows/NGY5MzZlYjktODdmNi00MWQ2LWEzMTEtNzU5MWYzZGMxZGFk 200
+[debug] [2025-10-05T19:40:51.206Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/operations/workflows/NGY5MzZlYjktODdmNi00MWQ2LWEzMTEtNzU5MWYzZGMxZGFk {"name":"operations/workflows/NGY5MzZlYjktODdmNi00MWQ2LWEzMTEtNzU5MWYzZGMxZGFk"}
+[debug] [2025-10-05T19:40:55.207Z] [Add Firebase Poller] Retrying task index 0
+[debug] [2025-10-05T19:40:55.208Z] Checked if tokens are valid: true, expires at: 1759696784148
+[debug] [2025-10-05T19:40:55.208Z] Checked if tokens are valid: true, expires at: 1759696784148
+[debug] [2025-10-05T19:40:55.208Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/operations/workflows/NGY5MzZlYjktODdmNi00MWQ2LWEzMTEtNzU5MWYzZGMxZGFk [none]
+[debug] [2025-10-05T19:40:55.777Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/operations/workflows/NGY5MzZlYjktODdmNi00MWQ2LWEzMTEtNzU5MWYzZGMxZGFk 200
+[debug] [2025-10-05T19:40:55.777Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/operations/workflows/NGY5MzZlYjktODdmNi00MWQ2LWEzMTEtNzU5MWYzZGMxZGFk {"name":"operations/workflows/NGY5MzZlYjktODdmNi00MWQ2LWEzMTEtNzU5MWYzZGMxZGFk","done":true,"response":{"@type":"type.googleapis.com/google.firebase.service.v1beta1.FirebaseProject","projectId":"zxschool","projectNumber":"1088448379741","displayName":"zxschool","name":"projects/zxschool","resources":{"hostingSite":"zxschool"}}}
+[info] 
+[info] === Your Firebase project is ready! ===
+[info] 
+[info] Project information:
+[info]    - Project ID: zxschool
+[info]    - Project Name: zxschool
+[info] 
+[info] Firebase console is available at
+[info] https://console.firebase.google.com/project/zxschool/overview
+[info] i  Using project zxschool (zxschool) 
+[info] 
+=== Hosting Setup
+[debug] [2025-10-05T19:40:56.128Z] Checked if tokens are valid: true, expires at: 1759696784148
+[debug] [2025-10-05T19:40:56.128Z] Checked if tokens are valid: true, expires at: 1759696784148
+[debug] [2025-10-05T19:40:56.128Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/zxschool [none]
+[debug] [2025-10-05T19:40:57.001Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/zxschool 200
+[debug] [2025-10-05T19:40:57.002Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/zxschool {"projectId":"zxschool","projectNumber":"1088448379741","displayName":"zxschool","name":"projects/zxschool","resources":{"hostingSite":"zxschool"},"state":"ACTIVE","etag":"1_658ec882-bc8f-405a-8ec2-4498a19a27dc"}
+[info] 
+[info] Your public directory is the folder (relative to your project directory) that
+[info] will contain Hosting assets to be uploaded with firebase deploy. If you
+[info] have a build process for your assets, use your build's output directory.
+[info] 
+[debug] [2025-10-05T19:41:16.465Z] >>> [apiv2][query] GET https://www.gstatic.com/firebasejs/releases.json [none]
+[debug] [2025-10-05T19:41:16.806Z] <<< [apiv2][status] GET https://www.gstatic.com/firebasejs/releases.json 200
+[debug] [2025-10-05T19:41:16.807Z] <<< [apiv2][body] GET https://www.gstatic.com/firebasejs/releases.json {"current":{"version":"12.3.0","browserURL":"https://www.gstatic.com/firebasejs/12.3.0/firebase.js","packageURL":"https://www.gstatic.com/firebasejs/12.3.0/firebase.tgz"},"live":{"version":"12.3","browserURL":"https://www.gstatic.com/firebasejs/live/12.3/firebase.js","packageURL":"https://www.gstatic.com/firebasejs/live/12.3/firebase.tgz"},"components":{"ai":"https://www.gstatic.com/firebasejs/12.3.0/firebase-ai.js","analytics":"https://www.gstatic.com/firebasejs/12.3.0/firebase-analytics.js","app":"https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js","app-check":"https://www.gstatic.com/firebasejs/12.3.0/firebase-app-check.js","auth":"https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js","auth/cordova":"https://www.gstatic.com/firebasejs/12.3.0/firebase-auth/cordova.js","auth/web-extension":"https://www.gstatic.com/firebasejs/12.3.0/firebase-auth/web-extension.js","functions":"https://www.gstatic.com/firebasejs/12.3.0/firebase-functions.js","firestore":"https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js","firestore/lite":"https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore/lite.js","installations":"https://www.gstatic.com/firebasejs/12.3.0/firebase-installations.js","storage":"https://www.gstatic.com/firebasejs/12.3.0/firebase-storage.js","performance":"https://www.gstatic.com/firebasejs/12.3.0/firebase-performance.js","remote-config":"https://www.gstatic.com/firebasejs/12.3.0/firebase-remote-config.js","messaging":"https://www.gstatic.com/firebasejs/12.3.0/firebase-messaging.js","messaging/sw":"https://www.gstatic.com/firebasejs/12.3.0/firebase-messaging/sw.js","database":"https://www.gstatic.com/firebasejs/12.3.0/firebase-database.js","data-connect":"https://www.gstatic.com/firebasejs/12.3.0/firebase-data-connect.js","firestore.memory":"https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.memory.js"}}
+[info] +  Wrote public/index.html 
+[info] 
+[info] i  Detected a .git folder at C:\Users\Shani\Documents\GitHub\ZxSchool Landing Page 
+[info] i  Authorizing with GitHub to upload your service account to a GitHub repository's secrets store. 
+[info] 
+[info] Visit this URL on this device to log in:
+[info] https://github.com/login/oauth/authorize?client_id=89cf50f02ac6aaed3484&state=150667929&redirect_uri=http%3A%2F%2Flocalhost%3A9005&scope=read%3Auser%20repo%20public_repo
+[info] 
+[info] Waiting for authentication...
+[debug] [2025-10-05T19:41:17.903Z] >>> [apiv2][query] POST https://github.com/login/oauth/access_token [none]
+[debug] [2025-10-05T19:41:17.903Z] >>> [apiv2][body] POST https://github.com/login/oauth/access_token [stream]
+[debug] [2025-10-05T19:41:18.675Z] <<< [apiv2][status] POST https://github.com/login/oauth/access_token 200
+[debug] [2025-10-05T19:41:18.675Z] <<< [apiv2][body] POST https://github.com/login/oauth/access_token {"access_token":"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","token_type":"bearer","scope":"read:user,repo"}
+[debug] [2025-10-05T19:41:18.680Z] >>> [apiv2][query] GET https://api.github.com/user [none]
+[debug] [2025-10-05T19:41:19.513Z] <<< [apiv2][status] GET https://api.github.com/user 200
+[debug] [2025-10-05T19:41:19.514Z] <<< [apiv2][body] GET https://api.github.com/user {"login":"xeeshan-zs","id":180097685,"node_id":"U_kgDOCrwSlQ","avatar_url":"https://avatars.githubusercontent.com/u/180097685?v=4","gravatar_id":"","url":"https://api.github.com/users/xeeshan-zs","html_url":"https://github.com/xeeshan-zs","followers_url":"https://api.github.com/users/xeeshan-zs/followers","following_url":"https://api.github.com/users/xeeshan-zs/following{/other_user}","gists_url":"https://api.github.com/users/xeeshan-zs/gists{/gist_id}","starred_url":"https://api.github.com/users/xeeshan-zs/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/xeeshan-zs/subscriptions","organizations_url":"https://api.github.com/users/xeeshan-zs/orgs","repos_url":"https://api.github.com/users/xeeshan-zs/repos","events_url":"https://api.github.com/users/xeeshan-zs/events{/privacy}","received_events_url":"https://api.github.com/users/xeeshan-zs/received_events","type":"User","user_view_type":"private","site_admin":false,"name":"ZEESHAN SARFRAZ","company":null,"blog":"https://xeeshan.carrd.co/","location":"Lahore, Pakistan ","email":"zeeshan303.3.1@gmail.com","hireable":null,"bio":"Hello ppl of Earth","twitter_username":null,"notification_email":"zeeshan303.3.1@gmail.com","public_repos":16,"public_gists":0,"followers":6,"following":9,"created_at":"2024-09-01T14:05:35Z","updated_at":"2025-10-05T11:24:55Z","private_gists":1,"total_private_repos":18,"owned_private_repos":18,"disk_usage":353707,"collaborators":3,"two_factor_authentication":true,"plan":{"name":"free","space":976562499,"collaborators":0,"private_repos":10000}}
+[info] 
+[info] +  Success! Logged into GitHub as xeeshan-zs 
+[info] 
