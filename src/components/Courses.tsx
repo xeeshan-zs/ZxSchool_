@@ -56,7 +56,20 @@ export function Courses() {
                   alt={course.title}
                   className="w-full h-full object-cover"
                 />
-                <Badge className="absolute top-4 right-4 bg-background/90">
+                {/*background shoul be liqued glass*/}
+                <Badge className="absolute top-4 right-4 bg-primary/20 rounded-full
+border-2
+border-primary/50
+text-primary
+bg-gradient-to-br from-white/20 to-white/5
+backdrop-blur-sm-lg
+shadow-lg
+text-foreground
+text-xs
+
+ text-background-foreground/80 backdrop-blur-sm px-3 py-1 rounded-0 text-border border-primary text-primary border
+" variant="outline" >
+
                   {course.level}
                 </Badge>
               </div>
