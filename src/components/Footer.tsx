@@ -1,4 +1,4 @@
-import { Github, Twitter, Linkedin, Youtube } from "lucide-react";
+import { Github, Twitter, Instagram ,Linkedin, Youtube } from "lucide-react";
 
 export function Footer() {
   return (
@@ -16,13 +16,13 @@ export function Footer() {
               Empowering the next generation of developers with quality education.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-                <Twitter className="w-5 h-5" />
+              <a href="https://www.instagram.com/zeeshan_sarfraz_" className="text-muted-foreground hover:text-foreground transition-colors">
+                <Instagram className="w-5 h-5" />
               </a>
-              <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+              <a href="https://www.github.com/xeeshan-zs" className="text-muted-foreground hover:text-foreground transition-colors">
                 <Github className="w-5 h-5" />
               </a>
-              <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+              <a href="https://www.linkedin.com/in/xeeshan-zs/" className="text-muted-foreground hover:text-foreground transition-colors">
                 <Linkedin className="w-5 h-5" />
               </a>
 
@@ -32,7 +32,7 @@ export function Footer() {
           <div>
             <h4 className="mb-4">Courses</h4>
             <ul className="space-y-2 text-muted-foreground">
-              <li><a href="#" className="hover:text-foreground transition-colors">C++ Programming</a></li>
+              <li><a href="./Courses.tsx" className="hover:text-foreground transition-colors">C++ Programming</a></li>
               <li><a href="#" className="hover:text-foreground transition-colors">Java Programming</a></li>
               <li><a href="#" className="hover:text-foreground transition-colors">SQL & Databases</a></li>
 

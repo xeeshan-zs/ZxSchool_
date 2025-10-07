@@ -2,6 +2,7 @@ import { Card } from "./ui/card";
 import { Badge } from "./ui/badge";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { Code2, GraduationCap, Award, BookOpen } from "lucide-react";
+// @ts-ignore
 import zee from "../assests/zee.jpg";
 
 const skills = [
@@ -58,10 +59,9 @@ export function About() {
                 <h4>About Me</h4>
               </div>
               <p className="text-muted-foreground leading-relaxed">
-                I'm passionate about making programming accessible and enjoyable for everyone. 
-                With years of experience in software development and teaching, I focus on 
-                helping students build strong fundamentals and practical skills that prepare 
-                them for real-world challenges.
+                I'm passionate about making programming simple, engaging, and accessible to everyone.
+                As a CS major myself, I enjoy sharing my knowledge with others and helping them strengthen their foundations.
+                My goal is to guide students in developing practical skills and confidence that prepare them for real-world challenges.
               </p>
             </Card>
             
@@ -132,12 +132,12 @@ export function About() {
                     Web development with HTML, CSS, and JavaScript
                   </span>
                 </li>
-                <li className="flex items-start gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></div>
-                  <span className="text-muted-foreground">
-                    Best practices and industry-standard coding conventions
-                  </span>
-                </li>
+                {/*<li className="flex items-start gap-3">*/}
+                {/*  <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></div>*/}
+                {/*  <span className="text-muted-foreground">*/}
+                {/*    Best practices and industry-standard coding conventions*/}
+                {/*  </span>*/}
+                {/*</li>*/}
               </ul>
             </Card>
           </div>

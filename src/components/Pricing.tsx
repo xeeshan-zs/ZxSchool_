@@ -71,7 +71,7 @@ export function Pricing() {
               </div>
             </div>
             
-            <Button className="w-full" size="lg">
+            <Button className="w-full" size="lg"  onClick={() => window.location.href = "https://forms.gle/zQmeXmnwN5J9ekX77"} >
               Enroll Now
             </Button>
             

@@ -8,8 +8,8 @@ const courses = [
   {
     title: "C++ For Beginners",
     level: "Beginner",
-    duration: "8 weeks",
-    students: "20K",
+    duration: "-",
+    students: "20+",
     rating: "4.8",
     image: "https://www.educative.io/v2api/editorpage/5393602882568192/image/6038586442907648",
     description: "Master the fundamentals of C++ programming, from basic syntax to object-oriented concepts."
@@ -17,8 +17,8 @@ const courses = [
   {
     title: "Java Programming",
     level: "Intermediate",
-    duration: "10 weeks",
-    students: "15K",
+    duration: "-",
+    students: "30+",
     rating: "4.7",
     image: "https://appmaster.io/api/_files/hRaLG2N4DVjRZJQzCpN2zJ/download/",
     description: "Become proficient in Java with this comprehensive course, covering core concepts and advanced topics."
@@ -26,8 +26,8 @@ const courses = [
   {
     title: "SQL Database Fundamentals",
     level: "Beginner",
-    duration: "6 weeks",
-    students: "10K",
+    duration: "-",
+    students: "15+",
     rating: "4.6",
     image: "https://images.unsplash.com/photo-1587620962725-abab7fe55159?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkYXRhYmFzZSUyMGNvZGluZ3xlbnwxfHx8fDE3NTk2ODg0Nzh8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
     description: "Learn to design, query, and manage databases using SQL, an essential skill for any developer."
