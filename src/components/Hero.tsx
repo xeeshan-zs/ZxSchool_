@@ -26,7 +26,7 @@ export function Hero() {
             
             <div className="flex flex-wrap gap-4">
               <Button size="lg" className="gap-2" onClick={() => window.location.href = "https://forms.gle/zQmeXmnwN5J9ekX77"}>
-                Start Learning Free
+                Start Learning
                 <ArrowRight className="w-4 h-4" />
               </Button>
               {/*<Button size="lg" variant="outline" className="gap-2">*/}
