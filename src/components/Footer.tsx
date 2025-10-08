@@ -40,17 +40,17 @@ export function Footer() {
           </div>
           
           <div>
-            <h4 className="mb-4">Resources</h4>
+            <h4 className="mb-4"></h4>
             <ul className="space-y-2 text-muted-foreground">
-              <li><a href="#" className="hover:text-foreground transition-colors">Blog</a></li>
-              <li><a href="#" className="hover:text-foreground transition-colors">Free Tutorials</a></li>
-              <li><a href="#" className="hover:text-foreground transition-colors">Community Forum</a></li>
+              <li><a href="#" className="hover:text-foreground transition-colors"> </a></li>
+              <li><a href="#" className="hover:text-foreground transition-colors">   </a></li>
+              <li><a href="#" className="hover:text-foreground transition-colors">   </a></li>
 
             </ul>
           </div>
           
           <div>
-            <h4 className="mb-4">Company</h4>
+            <h4 className="mb-4"></h4>
             <ul className="space-y-2 text-muted-foreground">
               <li><a href="#" className="hover:text-foreground transition-colors">About Us</a></li>
               <li><a href="#" className="hover:text-foreground transition-colors">Careers</a></li>
