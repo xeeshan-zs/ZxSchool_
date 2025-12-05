@@ -6,12 +6,12 @@ import { Code2, GraduationCap, Award, BookOpen } from "lucide-react";
 import zee from "../assests/zee.jpg";
 
 const skills = [
-  { name: "C++", level: "Expert" },
-  { name: "Java", level: "Expert" },
-  { name: "SQL", level: "Advanced" },
-  { name: "HTML", level: "Expert" },
-  { name: "CSS", level: "Expert" },
-  { name: "JavaScript", level: "Expert" }
+  { name: "C++", level: "--" },
+  { name: "Java", level: "--" },
+  { name: "SQL", level: "--" },
+  { name: "HTML", level: "--" },
+  { name: "CSS", level: "--" },
+  { name: "JavaScript", level: "--" }
 ];
 
 export function About() {

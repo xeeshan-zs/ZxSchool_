@@ -8,7 +8,7 @@ export function Hero() {
       <div className="container mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
-            <div className="inline-block px-4 py-2 bg-accent rounded-full">
+            <div className="inline-block px-4 py-2 glass rounded-full">
               <span className="text-accent-foreground">🚀 Start Your Coding Journey</span>
             </div>
             

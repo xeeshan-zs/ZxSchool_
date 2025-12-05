@@ -187,3 +187,59 @@
 html {
   font-size: var(--font-size);
 }
+
+@layer utilities {
+  /* Generic frosted glass surface */
+  .glass {
+    @apply backdrop-blur-md border rounded-2xl shadow-lg transition-all;
+    /* Gradient background that adapts to theme */
+    background: linear-gradient(
+      135deg,
+      color-mix(in oklab, #ffffff 40%, transparent) 0%,
+      color-mix(in oklab, #ffffff 10%, transparent) 100%
+    );
+    @apply dark:bg-transparent;
+    /* Fine-tuned border per theme */
+    border-color: color-mix(in oklab, #ffffff 20%, transparent);
+  }
+  .dark .glass {
+    background: linear-gradient(
+      135deg,
+      color-mix(in oklab, #ffffff 8%, transparent) 0%,
+      color-mix(in oklab, #ffffff 3%, transparent) 100%
+    );
+    border-color: color-mix(in oklab, #ffffff 12%, transparent);
+  }
+
+    /* Interactions */
+  .glass {
+    @apply hover:scale-105 hover:brightness-110 active:scale-95;
+  }
+
+  /* Stronger glass for featured elements */
+  .glass-strong {
+    @apply backdrop-blur-md border rounded-3xl shadow-2xl transition-all;
+    background: linear-gradient(
+      135deg,
+      color-mix(in oklab, #ffffff 55%, transparent) 0%,
+      color-mix(in oklab, #ffffff 20%, transparent) 100%
+    );
+    border-color: color-mix(in oklab, #ffffff 30%, transparent);
+  }
+  .dark .glass-strong {
+    background: linear-gradient(
+      135deg,
+      color-mix(in oklab, #ffffff 12%, transparent) 0%,
+      color-mix(in oklab, #ffffff 6%, transparent) 100%
+    );
+    border-color: color-mix(in oklab, #ffffff 15%, transparent);
+  }
+  .glass-strong {
+    @apply hover:scale-105 hover:brightness-110 active:scale-95;
+  }
+
+  /* Navigation-specific glass */
+  .glass-nav {
+    @apply bg-background/60 backdrop-blur-md border-b border-border;
+  }
+}
