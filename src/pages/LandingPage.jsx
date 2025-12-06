@@ -481,7 +481,7 @@ const LandingPage = () => {
                             onTouchEnd={handleDragEnd}
                         >
                             {/* Course Cards Grid */}
-                            <div style={{
+                            <div className="carousel-grid" style={{
                                 display: 'grid',
                                 gridTemplateColumns: 'repeat(3, 1fr)',
                                 gap: '1.5rem',
@@ -570,9 +570,10 @@ const LandingPage = () => {
 
                             {/* Navigation Buttons */}
                             {courses.length > 1 && (
-                                <>
+                                <div className="carousel-nav-container" style={{ position: 'relative' }}>
                                     <button
                                         onClick={prevCourse}
+                                        className="carousel-nav-btn"
                                         style={{
                                             position: 'absolute',
                                             left: '-60px',
@@ -603,6 +604,7 @@ const LandingPage = () => {
                                     </button>
                                     <button
                                         onClick={nextCourse}
+                                        className="carousel-nav-btn"
                                         style={{
                                             position: 'absolute',
                                             right: '-60px',
@@ -631,12 +633,12 @@ const LandingPage = () => {
                                     >
                                         <ChevronRight size={24} />
                                     </button>
-                                </>
+                                </div>
                             )}
 
                             {/* Dots Indicator */}
                             {courses.length > 3 && (
-                                <div style={{
+                                <div className="carousel-dots" style={{
                                     display: 'flex',
                                     justifyContent: 'center',
                                     gap: '0.5rem',
