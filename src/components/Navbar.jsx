@@ -4,7 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import Button from './Button';
-import { Menu, X, User, LogOut, Sun, Moon, BookOpen, Shield } from 'lucide-react';
+import { Menu, X, User, LogOut, Sun, Moon, Shield, Home, GraduationCap, Info } from 'lucide-react';
 
 const Navbar = () => {
     const { user, userData, logout } = useAuth();
@@ -59,33 +59,95 @@ const Navbar = () => {
                     {/* Desktop Menu */}
                     <div style={{
                         display: 'flex',
-                        gap: '2rem',
+                        gap: '0.5rem',
                         alignItems: 'center'
                     }} className="desktop-menu">
-                        <Link to="/courses" style={{
-                            textDecoration: 'none',
-                            color: 'var(--color-text)',
-                            fontWeight: 600,
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '0.5rem',
-                            transition: 'all 0.2s',
-                            padding: '0.5rem 1rem',
-                            borderRadius: 'var(--radius-md)'
-                        }}
-                            onMouseEnter={(e) => {
-                                e.currentTarget.style.color = 'var(--color-primary)';
-                                e.currentTarget.style.backgroundColor = 'rgba(59, 130, 246, 0.1)';
+                        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                            <Link to="/" style={{
+                                textDecoration: 'none',
+                                color: 'var(--color-text)',
+                                fontWeight: 600,
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '0.5rem',
+                                transition: 'all 0.3s ease',
+                                padding: '0.625rem 1.25rem',
+                                borderRadius: 'var(--radius-lg)'
                             }}
-                            onMouseLeave={(e) => {
-                                e.currentTarget.style.color = 'var(--color-text)';
-                                e.currentTarget.style.backgroundColor = 'transparent';
-                            }}>
-                            <BookOpen size={18} />
-                            Courses
-                        </Link>
+                                onMouseEnter={(e) => {
+                                    e.currentTarget.style.color = 'var(--color-primary)';
+                                    e.currentTarget.style.backgroundColor = 'rgba(59, 130, 246, 0.1)';
+                                }}
+                                onMouseLeave={(e) => {
+                                    e.currentTarget.style.color = 'var(--color-text)';
+                                    e.currentTarget.style.backgroundColor = 'transparent';
+                                }}>
+                                <Home size={18} />
+                                Home
+                            </Link>
+                        </motion.div>
 
-                        <button
+                        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                            <Link to="/courses" style={{
+                                textDecoration: 'none',
+                                color: 'var(--color-text)',
+                                fontWeight: 600,
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '0.5rem',
+                                transition: 'all 0.3s ease',
+                                padding: '0.625rem 1.25rem',
+                                borderRadius: 'var(--radius-lg)'
+                            }}
+                                onMouseEnter={(e) => {
+                                    e.currentTarget.style.color = 'var(--color-primary)';
+                                    e.currentTarget.style.backgroundColor = 'rgba(59, 130, 246, 0.1)';
+                                }}
+                                onMouseLeave={(e) => {
+                                    e.currentTarget.style.color = 'var(--color-text)';
+                                    e.currentTarget.style.backgroundColor = 'transparent';
+                                }}>
+                                <GraduationCap size={18} />
+                                Courses
+                            </Link>
+                        </motion.div>
+
+                        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                            <Link to="/about" style={{
+                                textDecoration: 'none',
+                                color: 'var(--color-text)',
+                                fontWeight: 600,
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '0.5rem',
+                                transition: 'all 0.3s ease',
+                                padding: '0.625rem 1.25rem',
+                                borderRadius: 'var(--radius-lg)'
+                            }}
+                                onMouseEnter={(e) => {
+                                    e.currentTarget.style.color = 'var(--color-primary)';
+                                    e.currentTarget.style.backgroundColor = 'rgba(59, 130, 246, 0.1)';
+                                }}
+                                onMouseLeave={(e) => {
+                                    e.currentTarget.style.color = 'var(--color-text)';
+                                    e.currentTarget.style.backgroundColor = 'transparent';
+                                }}>
+                                <Info size={18} />
+                                About
+                            </Link>
+                        </motion.div>
+
+                        <div style={{
+                            width: '1px',
+                            height: '24px',
+                            backgroundColor: 'var(--color-border)',
+                            margin: '0 0.5rem'
+                        }} />
+
+                        <motion.button
+                            whileHover={{ scale: 1.1, rotate: 180 }}
+                            whileTap={{ scale: 0.9 }}
+                            transition={{ type: 'spring', stiffness: 300 }}
                             onClick={toggleTheme}
                             style={{
                                 background: 'rgba(255, 255, 255, 0.05)',
@@ -102,16 +164,14 @@ const Navbar = () => {
                             onMouseEnter={(e) => {
                                 e.currentTarget.style.backgroundColor = 'rgba(59, 130, 246, 0.1)';
                                 e.currentTarget.style.borderColor = 'var(--color-primary)';
-                                e.currentTarget.style.transform = 'scale(1.05)';
                             }}
                             onMouseLeave={(e) => {
                                 e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
                                 e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
-                                e.currentTarget.style.transform = 'scale(1)';
                             }}
                         >
                             {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
-                        </button>
+                        </motion.button>
 
                         {user ? (
                             <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
@@ -278,6 +338,26 @@ const Navbar = () => {
 
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                                 <Link
+                                    to="/"
+                                    onClick={() => setIsOpen(false)}
+                                    style={{
+                                        textDecoration: 'none',
+                                        color: 'var(--color-text)',
+                                        padding: '1rem',
+                                        borderRadius: 'var(--radius-lg)',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: '0.75rem',
+                                        fontWeight: '600',
+                                        fontSize: '1.0625rem',
+                                        transition: 'all 0.2s',
+                                        background: 'rgba(255, 255, 255, 0.03)'
+                                    }}
+                                >
+                                    <Home size={20} />
+                                    Home
+                                </Link>
+                                <Link
                                     to="/courses"
                                     onClick={() => setIsOpen(false)}
                                     style={{
@@ -293,17 +373,29 @@ const Navbar = () => {
                                         transition: 'all 0.2s',
                                         background: 'rgba(255, 255, 255, 0.03)'
                                     }}
-                                    onMouseEnter={(e) => {
-                                        e.currentTarget.style.backgroundColor = 'rgba(59, 130, 246, 0.1)';
-                                        e.currentTarget.style.color = 'var(--color-primary)';
-                                    }}
-                                    onMouseLeave={(e) => {
-                                        e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.03)';
-                                        e.currentTarget.style.color = 'var(--color-text)';
+                                >
+                                    <GraduationCap size={20} />
+                                    Courses
+                                </Link>
+                                <Link
+                                    to="/about"
+                                    onClick={() => setIsOpen(false)}
+                                    style={{
+                                        textDecoration: 'none',
+                                        color: 'var(--color-text)',
+                                        padding: '1rem',
+                                        borderRadius: 'var(--radius-lg)',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: '0.75rem',
+                                        fontWeight: '600',
+                                        fontSize: '1.0625rem',
+                                        transition: 'all 0.2s',
+                                        background: 'rgba(255, 255, 255, 0.03)'
                                     }}
                                 >
-                                    <BookOpen size={20} />
-                                    Courses
+                                    <Info size={20} />
+                                    About
                                 </Link>
                                 {user ? (
                                     <>
@@ -322,7 +414,8 @@ const Navbar = () => {
                                                     gap: '0.75rem',
                                                     fontSize: '1.0625rem',
                                                     background: 'rgba(59, 130, 246, 0.1)',
-                                                    border: '1px solid rgba(59, 130, 246, 0.2)'
+                                                    border: '1px solid rgba(59, 130, 246, 0.2)',
+                                                    marginTop: '1rem'
                                                 }}
                                             >
                                                 <Shield size={20} />
@@ -343,15 +436,8 @@ const Navbar = () => {
                                                 fontWeight: '600',
                                                 fontSize: '1.0625rem',
                                                 transition: 'all 0.2s',
-                                                background: 'rgba(255, 255, 255, 0.03)'
-                                            }}
-                                            onMouseEnter={(e) => {
-                                                e.currentTarget.style.backgroundColor = 'rgba(59, 130, 246, 0.1)';
-                                                e.currentTarget.style.color = 'var(--color-primary)';
-                                            }}
-                                            onMouseLeave={(e) => {
-                                                e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.03)';
-                                                e.currentTarget.style.color = 'var(--color-text)';
+                                                background: 'rgba(255, 255, 255, 0.03)',
+                                                marginTop: userData?.role === 'admin' ? '0' : '1rem'
                                             }}
                                         >
                                             <User size={20} />
@@ -374,12 +460,6 @@ const Navbar = () => {
                                                 cursor: 'pointer',
                                                 transition: 'all 0.2s',
                                                 marginTop: '1rem'
-                                            }}
-                                            onMouseEnter={(e) => {
-                                                e.currentTarget.style.backgroundColor = 'rgba(239, 68, 68, 0.2)';
-                                            }}
-                                            onMouseLeave={(e) => {
-                                                e.currentTarget.style.backgroundColor = 'rgba(239, 68, 68, 0.1)';
                                             }}
                                         >
                                             <LogOut size={20} />
