@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import { getAllReviews, approveReview, rejectReview, updateReview, deleteReview } from '../../services/reviewService';
+import { useAuth } from '../../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 import Button from '../../components/Button';
 import Card from '../../components/Card';
 import Input from '../../components/Input';
-import { Star, Trash2, Edit2, Check, X, Filter, MessageSquare } from 'lucide-react';
+import { Star, Trash2, Edit2, Check, X, Filter, MessageSquare, LogOut } from 'lucide-react';
 
 const ManageReviews = () => {
     const [reviews, setReviews] = useState([]);
@@ -11,6 +13,17 @@ const ManageReviews = () => {
     const [loading, setLoading] = useState(true);
     const [editingReview, setEditingReview] = useState(null);
     const [editForm, setEditForm] = useState({ rating: 0, comment: '' });
+    const { logout } = useAuth();
+    const navigate = useNavigate();
+
+    const handleLogout = async () => {
+        try {
+            await logout();
+            navigate('/login');
+        } catch (error) {
+            console.error("Failed to log out", error);
+        }
+    };
 
     useEffect(() => {
         fetchReviews();
@@ -79,7 +92,7 @@ const ManageReviews = () => {
 
     return (
         <div className="container" style={{ padding: '2rem 1rem' }}>
-            <div style={{
+            <div className="admin-header" style={{
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
@@ -104,35 +117,51 @@ const ManageReviews = () => {
                     </p>
                 </div>
 
-                {/* Filter Buttons */}
-                <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', alignItems: 'center' }}>
+                    {/* Filter Buttons */}
+                    <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                        <Button
+                            variant={filter === 'all' ? 'primary' : 'outline'}
+                            onClick={() => setFilter('all')}
+                            style={{ fontSize: '0.875rem' }}
+                        >
+                            All ({stats.total})
+                        </Button>
+                        <Button
+                            variant={filter === 'approved' ? 'primary' : 'outline'}
+                            onClick={() => setFilter('approved')}
+                            style={{ fontSize: '0.875rem' }}
+                        >
+                            Approved ({stats.approved})
+                        </Button>
+                        <Button
+                            variant={filter === 'pending' ? 'primary' : 'outline'}
+                            onClick={() => setFilter('pending')}
+                            style={{ fontSize: '0.875rem' }}
+                        >
+                            Pending ({stats.pending})
+                        </Button>
+                        <Button
+                            variant={filter === 'rejected' ? 'primary' : 'outline'}
+                            onClick={() => setFilter('rejected')}
+                            style={{ fontSize: '0.875rem' }}
+                        >
+                            Rejected ({stats.rejected})
+                        </Button>
+                    </div>
                     <Button
-                        variant={filter === 'all' ? 'primary' : 'outline'}
-                        onClick={() => setFilter('all')}
-                        style={{ fontSize: '0.875rem' }}
+                        variant="outline"
+                        onClick={handleLogout}
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '0.5rem',
+                            color: 'var(--color-danger)',
+                            borderColor: 'var(--color-danger)'
+                        }}
                     >
-                        All ({stats.total})
-                    </Button>
-                    <Button
-                        variant={filter === 'approved' ? 'primary' : 'outline'}
-                        onClick={() => setFilter('approved')}
-                        style={{ fontSize: '0.875rem' }}
-                    >
-                        Approved ({stats.approved})
-                    </Button>
-                    <Button
-                        variant={filter === 'pending' ? 'primary' : 'outline'}
-                        onClick={() => setFilter('pending')}
-                        style={{ fontSize: '0.875rem' }}
-                    >
-                        Pending ({stats.pending})
-                    </Button>
-                    <Button
-                        variant={filter === 'rejected' ? 'primary' : 'outline'}
-                        onClick={() => setFilter('rejected')}
-                        style={{ fontSize: '0.875rem' }}
-                    >
-                        Rejected ({stats.rejected})
+                        <LogOut size={18} />
+                        Logout
                     </Button>
                 </div>
             </div>

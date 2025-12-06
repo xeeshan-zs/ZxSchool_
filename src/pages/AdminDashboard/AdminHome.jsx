@@ -1,11 +1,21 @@
 import { useAuth } from '../../context/AuthContext';
 import Card from '../../components/Card';
+import Button from '../../components/Button';
 import { useNavigate } from 'react-router-dom';
-import { BookOpen, Tag, FileText, Users, LayoutDashboard, Star, TrendingUp, UserCircle } from 'lucide-react';
+import { BookOpen, Tag, FileText, Users, LayoutDashboard, Star, TrendingUp, UserCircle, LogOut } from 'lucide-react';
 
 const AdminHome = () => {
-    const { userData } = useAuth();
+    const { userData, logout } = useAuth();
     const navigate = useNavigate();
+
+    const handleLogout = async () => {
+        try {
+            await logout();
+            navigate('/login');
+        } catch (error) {
+            console.error("Failed to log out", error);
+        }
+    };
 
     const adminCards = [
         {
@@ -61,12 +71,17 @@ const AdminHome = () => {
 
     return (
         <div className="container" style={{ padding: '2rem 1rem' }}>
-            <div style={{ marginBottom: '3rem' }}>
+            <div className="admin-header" style={{
+                marginBottom: '3rem',
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                gap: '1rem'
+            }}>
                 <div style={{
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '1rem',
-                    marginBottom: '1rem'
+                    gap: '1rem'
                 }}>
                     <div style={{
                         padding: '1rem',
@@ -94,9 +109,25 @@ const AdminHome = () => {
                         </p>
                     </div>
                 </div>
+                <div className="admin-header-actions">
+                    <Button
+                        variant="outline"
+                        onClick={handleLogout}
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '0.5rem',
+                            color: 'var(--color-danger)',
+                            borderColor: 'var(--color-danger)'
+                        }}
+                    >
+                        <LogOut size={18} />
+                        Logout
+                    </Button>
+                </div>
             </div>
 
-            <div style={{
+            <div className="admin-cards-grid" style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
                 gap: '1.5rem'

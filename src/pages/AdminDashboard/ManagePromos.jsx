@@ -1,14 +1,27 @@
 import { useState, useEffect } from 'react';
 import { db } from '../../firebase/config';
 import { collection, addDoc, getDocs, deleteDoc, doc } from 'firebase/firestore';
+import { useAuth } from '../../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 import Button from '../../components/Button';
 import Card from '../../components/Card';
 import Input from '../../components/Input';
-import { Tag, Plus, Trash2, Percent, Ticket } from 'lucide-react';
+import { Tag, Plus, Trash2, Percent, Ticket, LogOut } from 'lucide-react';
 
 const ManagePromos = () => {
     const [promos, setPromos] = useState([]);
     const [newPromo, setNewPromo] = useState({ code: '', discountPercent: '' });
+    const { logout } = useAuth();
+    const navigate = useNavigate();
+
+    const handleLogout = async () => {
+        try {
+            await logout();
+            navigate('/login');
+        } catch (error) {
+            console.error("Failed to log out", error);
+        }
+    };
 
     useEffect(() => {
         fetchPromos();
@@ -39,21 +52,45 @@ const ManagePromos = () => {
 
     return (
         <div className="container" style={{ padding: '2rem 1rem' }}>
-            <div style={{ marginBottom: '2rem' }}>
-                <h2 style={{
-                    fontSize: 'clamp(1.75rem, 3vw, 2rem)',
-                    fontWeight: '700',
-                    color: 'var(--color-text)',
-                    marginBottom: '0.25rem'
-                }}>
-                    Promo Codes
-                </h2>
-                <p style={{
-                    fontSize: '0.875rem',
-                    color: 'var(--color-text-secondary)'
-                }}>
-                    {promos.length} active promo code{promos.length !== 1 ? 's' : ''}
-                </p>
+            <div className="admin-header" style={{
+                marginBottom: '2rem',
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                gap: '1rem'
+            }}>
+                <div>
+                    <h2 style={{
+                        fontSize: 'clamp(1.75rem, 3vw, 2rem)',
+                        fontWeight: '700',
+                        color: 'var(--color-text)',
+                        marginBottom: '0.25rem'
+                    }}>
+                        Promo Codes
+                    </h2>
+                    <p style={{
+                        fontSize: '0.875rem',
+                        color: 'var(--color-text-secondary)'
+                    }}>
+                        {promos.length} active promo code{promos.length !== 1 ? 's' : ''}
+                    </p>
+                </div>
+                <div className="admin-header-actions">
+                    <Button
+                        variant="outline"
+                        onClick={handleLogout}
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '0.5rem',
+                            color: 'var(--color-danger)',
+                            borderColor: 'var(--color-danger)'
+                        }}
+                    >
+                        <LogOut size={18} />
+                        Logout
+                    </Button>
+                </div>
             </div>
 
             <Card style={{ marginBottom: '2rem' }}>

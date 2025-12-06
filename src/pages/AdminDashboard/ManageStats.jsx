@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import { getStats, manualUpdateStats, updateReviewStats } from '../../services/statsService';
+import { useAuth } from '../../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 import Button from '../../components/Button';
 import Card from '../../components/Card';
 import Input from '../../components/Input';
-import { TrendingUp, Users, MessageSquare, Star, RefreshCw, Edit2, Save, X } from 'lucide-react';
+import { TrendingUp, Users, MessageSquare, Star, RefreshCw, Edit2, Save, X, LogOut } from 'lucide-react';
 
 const ManageStats = () => {
     const [stats, setStats] = useState({
@@ -16,6 +18,17 @@ const ManageStats = () => {
     const [editing, setEditing] = useState(null);
     const [editValue, setEditValue] = useState('');
     const [refreshing, setRefreshing] = useState(false);
+    const { logout } = useAuth();
+    const navigate = useNavigate();
+
+    const handleLogout = async () => {
+        try {
+            await logout();
+            navigate('/login');
+        } catch (error) {
+            console.error("Failed to log out", error);
+        }
+    };
 
     useEffect(() => {
         fetchStats();
@@ -119,7 +132,7 @@ const ManageStats = () => {
 
     return (
         <div className="container" style={{ padding: '2rem 1rem' }}>
-            <div style={{
+            <div className="admin-header" style={{
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
@@ -144,19 +157,35 @@ const ManageStats = () => {
                     </p>
                 </div>
 
-                <Button
-                    variant="outline"
-                    onClick={handleRefreshReviewStats}
-                    disabled={refreshing}
-                    style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '0.5rem'
-                    }}
-                >
-                    <RefreshCw size={16} className={refreshing ? 'spinning' : ''} />
-                    {refreshing ? 'Refreshing...' : 'Refresh Review Stats'}
-                </Button>
+                <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+                    <Button
+                        variant="outline"
+                        onClick={handleRefreshReviewStats}
+                        disabled={refreshing}
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '0.5rem'
+                        }}
+                    >
+                        <RefreshCw size={16} className={refreshing ? 'spinning' : ''} />
+                        {refreshing ? 'Refreshing...' : 'Refresh Review Stats'}
+                    </Button>
+                    <Button
+                        variant="outline"
+                        onClick={handleLogout}
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '0.5rem',
+                            color: 'var(--color-danger)',
+                            borderColor: 'var(--color-danger)'
+                        }}
+                    >
+                        <LogOut size={18} />
+                        Logout
+                    </Button>
+                </div>
             </div>
 
             {stats.lastUpdated && (

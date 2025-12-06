@@ -201,20 +201,6 @@ const Navbar = () => {
                                         {userData?.name || 'Dashboard'}
                                     </Button>
                                 </Link>
-                                <Button
-                                    variant="outline"
-                                    onClick={handleLogout}
-                                    style={{
-                                        padding: '0.625rem 1.25rem',
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        gap: '0.5rem',
-                                        fontWeight: '600'
-                                    }}
-                                >
-                                    <LogOut size={16} />
-                                    Logout
-                                </Button>
                             </div>
                         ) : (
                             <div style={{ display: 'flex', gap: '0.75rem' }}>
@@ -443,28 +429,6 @@ const Navbar = () => {
                                             <User size={20} />
                                             Dashboard
                                         </Link>
-                                        <button
-                                            onClick={() => { handleLogout(); setIsOpen(false); }}
-                                            style={{
-                                                textAlign: 'left',
-                                                background: 'rgba(239, 68, 68, 0.1)',
-                                                border: '1px solid rgba(239, 68, 68, 0.2)',
-                                                color: '#ef4444',
-                                                fontSize: '1.0625rem',
-                                                fontWeight: '600',
-                                                padding: '1rem',
-                                                borderRadius: 'var(--radius-lg)',
-                                                display: 'flex',
-                                                alignItems: 'center',
-                                                gap: '0.75rem',
-                                                cursor: 'pointer',
-                                                transition: 'all 0.2s',
-                                                marginTop: '1rem'
-                                            }}
-                                        >
-                                            <LogOut size={20} />
-                                            Logout
-                                        </button>
                                     </>
                                 ) : (
                                     <>

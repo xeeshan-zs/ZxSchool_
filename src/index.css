@@ -158,6 +158,7 @@ button {
 
 /* Mobile Responsive Styles */
 @media (max-width: 768px) {
+
   /* Hide desktop menu on mobile */
   .desktop-menu {
     display: none !important;
@@ -166,6 +167,21 @@ button {
   /* Show mobile menu toggle */
   .md\:hidden {
     display: flex !important;
+  }
+
+  /* Glass panel mobile optimizations */
+  .glass-panel {
+    padding: 1.25rem !important;
+    margin: 0.5rem;
+    width: calc(100% - 1rem);
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  /* Disable hover effects on mobile */
+  .glass-panel:hover {
+    transform: none;
   }
 
   /* Container adjustments */
@@ -228,10 +244,122 @@ button {
   .carousel-dots {
     margin-top: 1rem !important;
   }
+
+  /* Dashboard responsive styles */
+  .dashboard-layout {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+
+  .dashboard-sidebar {
+    position: sticky !important;
+    top: 5rem !important;
+    width: 100% !important;
+    margin-bottom: 1.5rem;
+    z-index: 10;
+    background: var(--color-bg);
+    padding: 0.5rem !important;
+    border-radius: var(--radius-lg) !important;
+  }
+
+  .dashboard-sidebar>div {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-around !important;
+    align-items: center !important;
+    gap: 0.25rem !important;
+    padding: 0.25rem !important;
+  }
+
+  .dashboard-sidebar button {
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 0.25rem !important;
+    padding: 0.5rem 0.75rem !important;
+    min-width: 60px !important;
+    min-height: 60px !important;
+    flex: 1;
+    max-width: 80px;
+    border-radius: var(--radius-md) !important;
+    font-size: 0.75rem !important;
+    font-weight: 600 !important;
+  }
+
+  /* Icon sizing for mobile nav */
+  .dashboard-sidebar button svg {
+    width: 22px !important;
+    height: 22px !important;
+  }
+
+  /* Hide text by default on mobile */
+  .dashboard-sidebar .sidebar-text {
+    display: none;
+    font-size: 0.6875rem;
+    margin-top: 0.125rem;
+    text-align: center;
+    line-height: 1;
+  }
+
+  /* Show text only for active buttons */
+  .dashboard-sidebar button[class*="primary"] .sidebar-text {
+    display: block;
+  }
+
+  /* Hide divider on mobile */
+  .dashboard-sidebar>div>div {
+    display: none !important;
+  }
+
+  /* Remove gradient indicator for bottom nav style */
+  .dashboard-sidebar::after {
+    display: none;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .profile-info-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .admin-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 1rem !important;
+  }
+
+  .admin-header-actions {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .admin-cards-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* User cards on mobile */
+  .user-card-content {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  .user-card-info {
+    margin-left: 0 !important;
+  }
 }
 
 /* Extra small devices */
 @media (max-width: 480px) {
+
+  /* Further reduce glass panel padding on very small screens */
+  .glass-panel {
+    padding: 0.875rem !important;
+    border-radius: var(--radius-lg);
+  }
+
   .container {
     padding: 0 0.75rem;
   }

@@ -2,10 +2,12 @@ import { useState, useEffect } from 'react';
 import { db } from '../../firebase/config';
 import { collection, addDoc, getDocs, updateDoc, deleteDoc, doc, serverTimestamp, orderBy, query } from 'firebase/firestore';
 import { uploadInstructorImage, deleteInstructorImage } from '../../services/uploadService';
+import { useAuth } from '../../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 import Button from '../../components/Button';
 import Card from '../../components/Card';
 import Input from '../../components/Input';
-import { UserCircle, Plus, Trash2, Edit2, Save, X, Upload, Tag } from 'lucide-react';
+import { UserCircle, Plus, Trash2, Edit2, Save, X, Upload, Tag, LogOut } from 'lucide-react';
 
 const ManageInstructors = () => {
     const [instructors, setInstructors] = useState([]);
@@ -13,6 +15,17 @@ const ManageInstructors = () => {
     const [isAdding, setIsAdding] = useState(false);
     const [editingId, setEditingId] = useState(null);
     const [uploading, setUploading] = useState(false);
+    const { logout } = useAuth();
+    const navigate = useNavigate();
+
+    const handleLogout = async () => {
+        try {
+            await logout();
+            navigate('/login');
+        } catch (error) {
+            console.error("Failed to log out", error);
+        }
+    };
 
     const [formData, setFormData] = useState({
         name: '',
@@ -136,7 +149,7 @@ const ManageInstructors = () => {
 
     return (
         <div className="container" style={{ padding: '2rem 1rem' }}>
-            <div style={{
+            <div className="admin-header" style={{
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
@@ -161,16 +174,32 @@ const ManageInstructors = () => {
                     </p>
                 </div>
 
-                {!isAdding && (
+                <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+                    {!isAdding && (
+                        <Button
+                            variant="primary"
+                            onClick={() => setIsAdding(true)}
+                            style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
+                        >
+                            <Plus size={18} />
+                            Add Instructor
+                        </Button>
+                    )}
                     <Button
-                        variant="primary"
-                        onClick={() => setIsAdding(true)}
-                        style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
+                        variant="outline"
+                        onClick={handleLogout}
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '0.5rem',
+                            color: 'var(--color-danger)',
+                            borderColor: 'var(--color-danger)'
+                        }}
                     >
-                        <Plus size={18} />
-                        Add Instructor
+                        <LogOut size={18} />
+                        Logout
                     </Button>
-                )}
+                </div>
             </div>
 
             {/* Add/Edit Form */}

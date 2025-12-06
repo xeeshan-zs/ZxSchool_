@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 import { db } from '../firebase/config';
 import { doc, updateDoc, collection, query, where, getDocs, getDoc } from 'firebase/firestore';
 import { motion } from 'framer-motion';
 import Button from '../components/Button';
 import Card from '../components/Card';
 import Input from '../components/Input';
-import { User, Mail, Phone, Building2, Edit2, Save, X, FileText, Clock, CheckCircle, XCircle, Star } from 'lucide-react';
+import { User, Mail, Phone, Building2, Edit2, Save, X, FileText, Clock, CheckCircle, XCircle, Star, LogOut } from 'lucide-react';
 import ReviewForm from '../components/ReviewForm';
 import { submitReview, updateReview, getUserReview } from '../services/reviewService';
 
@@ -153,7 +154,7 @@ const ProfileTab = ({ userData }) => {
                     </Button>
                 </form>
             ) : (
-                <div style={{
+                <div className="profile-info-grid" style={{
                     display: 'grid',
                     gap: '1rem',
                     gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))'
@@ -478,8 +479,18 @@ const ReviewsTab = () => {
 };
 
 const Dashboard = () => {
-    const { user, userData, loading } = useAuth();
+    const { user, userData, loading, logout } = useAuth();
+    const navigate = useNavigate();
     const [activeTab, setActiveTab] = useState('profile');
+
+    const handleLogout = async () => {
+        try {
+            await logout();
+            navigate('/login');
+        } catch (error) {
+            console.error("Failed to log out", error);
+        }
+    };
 
     if (loading) return (
         <div style={{
@@ -524,14 +535,14 @@ const Dashboard = () => {
                 </p>
             </div>
 
-            <div style={{
+            <div className="dashboard-layout" style={{
                 display: 'grid',
                 gridTemplateColumns: 'minmax(200px, 250px) 1fr',
                 gap: '2rem',
                 alignItems: 'start'
             }}>
                 {/* Sidebar */}
-                <Card style={{ position: 'sticky', top: '6rem' }}>
+                <Card className="dashboard-sidebar" style={{ position: 'sticky', top: '6rem' }}>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                         <Button
                             variant={activeTab === 'profile' ? 'primary' : 'ghost'}
@@ -545,7 +556,7 @@ const Dashboard = () => {
                             }}
                         >
                             <User size={18} />
-                            Profile
+                            <span className="sidebar-text">Profile</span>
                         </Button>
                         <Button
                             variant={activeTab === 'applications' ? 'primary' : 'ghost'}
@@ -559,7 +570,7 @@ const Dashboard = () => {
                             }}
                         >
                             <FileText size={18} />
-                            Applications
+                            <span className="sidebar-text">Applications</span>
                         </Button>
                         <Button
                             variant={activeTab === 'reviews' ? 'primary' : 'ghost'}
@@ -573,7 +584,29 @@ const Dashboard = () => {
                             }}
                         >
                             <Star size={18} />
-                            Reviews
+                            <span className="sidebar-text">Reviews</span>
+                        </Button>
+                        <div style={{
+                            width: '100%',
+                            height: '1px',
+                            backgroundColor: 'var(--color-border)',
+                            margin: '0.5rem 0'
+                        }} />
+                        <Button
+                            variant="outline"
+                            onClick={handleLogout}
+                            style={{
+                                justifyContent: 'flex-start',
+                                width: '100%',
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '0.75rem',
+                                color: 'var(--color-danger)',
+                                borderColor: 'var(--color-danger)'
+                            }}
+                        >
+                            <LogOut size={18} />
+                            <span className="sidebar-text">Logout</span>
                         </Button>
                     </div>
                 </Card>

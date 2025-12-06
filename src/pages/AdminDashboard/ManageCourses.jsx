@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import { db } from '../../firebase/config';
 import { collection, addDoc, getDocs, deleteDoc, doc, updateDoc } from 'firebase/firestore';
+import { useAuth } from '../../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 import Button from '../../components/Button';
 import Card from '../../components/Card';
 import Input from '../../components/Input';
-import { Plus, BookOpen, Trash2, Edit2, X } from 'lucide-react';
+import { Plus, BookOpen, Trash2, Edit2, X, LogOut } from 'lucide-react';
 
 const ManageCourses = () => {
     const [courses, setCourses] = useState([]);
@@ -12,6 +14,17 @@ const ManageCourses = () => {
     const [editingCourse, setEditingCourse] = useState(null);
     const [newCourse, setNewCourse] = useState({ title: '', description: '', fee: '', image: '' });
     const [editForm, setEditForm] = useState({ title: '', description: '', fee: '', image: '' });
+    const { logout } = useAuth();
+    const navigate = useNavigate();
+
+    const handleLogout = async () => {
+        try {
+            await logout();
+            navigate('/login');
+        } catch (error) {
+            console.error("Failed to log out", error);
+        }
+    };
 
     useEffect(() => {
         fetchCourses();
@@ -73,7 +86,7 @@ const ManageCourses = () => {
 
     return (
         <div className="container" style={{ padding: '2rem 1rem' }}>
-            <div style={{
+            <div className="admin-header" style={{
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
@@ -97,18 +110,34 @@ const ManageCourses = () => {
                         {courses.length} course{courses.length !== 1 ? 's' : ''} available
                     </p>
                 </div>
-                <Button
-                    variant="primary"
-                    onClick={() => setIsCreating(true)}
-                    style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '0.5rem'
-                    }}
-                >
-                    <Plus size={18} />
-                    Add Course
-                </Button>
+                <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+                    <Button
+                        variant="primary"
+                        onClick={() => setIsCreating(true)}
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '0.5rem'
+                        }}
+                    >
+                        <Plus size={18} />
+                        Add Course
+                    </Button>
+                    <Button
+                        variant="outline"
+                        onClick={handleLogout}
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '0.5rem',
+                            color: 'var(--color-danger)',
+                            borderColor: 'var(--color-danger)'
+                        }}
+                    >
+                        <LogOut size={18} />
+                        Logout
+                    </Button>
+                </div>
             </div>
 
             {isCreating && (

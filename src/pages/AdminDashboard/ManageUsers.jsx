@@ -1,12 +1,25 @@
 import { useState, useEffect } from 'react';
 import { db } from '../../firebase/config';
 import { collection, getDocs, updateDoc, doc } from 'firebase/firestore';
+import { useAuth } from '../../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 import Button from '../../components/Button';
 import Card from '../../components/Card';
-import { Users, Mail, Phone, Shield, ShieldOff, User } from 'lucide-react';
+import { Users, Mail, Phone, Shield, ShieldOff, User, LogOut } from 'lucide-react';
 
 const ManageUsers = () => {
     const [users, setUsers] = useState([]);
+    const { logout } = useAuth();
+    const navigate = useNavigate();
+
+    const handleLogout = async () => {
+        try {
+            await logout();
+            navigate('/login');
+        } catch (error) {
+            console.error("Failed to log out", error);
+        }
+    };
 
     useEffect(() => {
         fetchUsers();
@@ -27,21 +40,45 @@ const ManageUsers = () => {
 
     return (
         <div className="container" style={{ padding: '2rem 1rem' }}>
-            <div style={{ marginBottom: '2rem' }}>
-                <h2 style={{
-                    fontSize: 'clamp(1.75rem, 3vw, 2rem)',
-                    fontWeight: '700',
-                    color: 'var(--color-text)',
-                    marginBottom: '0.25rem'
-                }}>
-                    Registered Users
-                </h2>
-                <p style={{
-                    fontSize: '0.875rem',
-                    color: 'var(--color-text-secondary)'
-                }}>
-                    {users.length} total user{users.length !== 1 ? 's' : ''} • {users.filter(u => u.role === 'admin').length} admin{users.filter(u => u.role === 'admin').length !== 1 ? 's' : ''}
-                </p>
+            <div className="admin-header" style={{
+                marginBottom: '2rem',
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                gap: '1rem'
+            }}>
+                <div>
+                    <h2 style={{
+                        fontSize: 'clamp(1.75rem, 3vw, 2rem)',
+                        fontWeight: '700',
+                        color: 'var(--color-text)',
+                        marginBottom: '0.25rem'
+                    }}>
+                        Registered Users
+                    </h2>
+                    <p style={{
+                        fontSize: '0.875rem',
+                        color: 'var(--color-text-secondary)'
+                    }}>
+                        {users.length} total user{users.length !== 1 ? 's' : ''} • {users.filter(u => u.role === 'admin').length} admin{users.filter(u => u.role === 'admin').length !== 1 ? 's' : ''}
+                    </p>
+                </div>
+                <div className="admin-header-actions">
+                    <Button
+                        variant="outline"
+                        onClick={handleLogout}
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '0.5rem',
+                            color: 'var(--color-danger)',
+                            borderColor: 'var(--color-danger)'
+                        }}
+                    >
+                        <LogOut size={18} />
+                        Logout
+                    </Button>
+                </div>
             </div>
 
             <div style={{ display: 'grid', gap: '1rem' }}>
@@ -61,7 +98,7 @@ const ManageUsers = () => {
                 ) : (
                     users.map(user => (
                         <Card key={user.id} className="card-hover">
-                            <div style={{
+                            <div className="user-card-content" style={{
                                 display: 'flex',
                                 justifyContent: 'space-between',
                                 alignItems: 'center',
